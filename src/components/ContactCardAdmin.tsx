@@ -2,6 +2,7 @@
 
 import { Contact } from '@prisma/client';
 import { Card, Image } from 'react-bootstrap';
+import  Link  from 'next/link';
 
 /* Renders a single Contact. See list/page.tsx */
 const ContactCardAdmin = ({ contact }: { contact: Contact }) => (
@@ -19,6 +20,8 @@ const ContactCardAdmin = ({ contact }: { contact: Contact }) => (
 			<Card.Text>{contact.description}</Card.Text>
 			<Card.Footer className="block-quotefooter">
 				{contact.owner}
+				<br />
+				<Link href={`edit/${contact.id}`}>Edit</Link>
 			</Card.Footer>
 		</Card.Body>
 	</Card>
