@@ -7,6 +7,18 @@ import { redirect } from 'next/navigation';
 import { prisma } from './prisma';
 import { Contact } from '@prisma/client';
 
+    export async function addNote(note: { note: string; contactId: number, owner: string }) {
+        await prisma.note.create({
+            data: {
+                note: note.note,
+                contactId: note.contactId,
+                owner: note.owner,
+                createdAt: new Date(),
+            },
+        });
+        redirect('/list');
+    }
+    
 		/**
 		* Creates a new contact in the database
 		* @param contact the contact with the following properties
