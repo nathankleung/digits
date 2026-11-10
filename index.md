@@ -1,42 +1,22 @@
-![](https://github.com/ics-software-engineering/nextjs-application-template/raw/main/doc/landing-page.png)
+<img src="doc/landing.png">
 
-nextjs-application-template is a sample Next.js 16 application that illustrates:
-
-- A standard directory layout using 'src/' as recommended in the [Next.js Project Structure](https://nextjs.org/docs/getting-started/project-structure) guide.
-- [Bootstrap 5 React](https://react-bootstrap.github.io/) for user interface.
-- [React Hook Form](https://www.react-hook-form.com/) for form development.
-- Authorization, authentication, and registration using [NextAuth.js](https://next-auth.js.org/).
-- Initialization of users and data from a settings file.
-- Alerts regarding success or failure of DB updates using [Sweet Alert](https://sweetalert.js.org/).
-- Quality assurance using [ESLint](http://eslint.org) with packages to partially enforce the [Next.js ESLint rules](https://nextjs.org/docs/app/building-your-application/configuring/eslint).
-
-The goal of this template is to help you get quickly started doing Next.js development by providing a reasonable directory structure for development and deployment, a set of common extensions to the core framework, and boilerplate code to implement basic page display, navigation, forms, roles, and database manipulation.
-
-To keep this codebase simple and small, some important capabilities are intentionally excluded from this template:
-
-- Unit Testing
-- Security
-- Deployment
-
-Examples of the these capabilities will be provided elsewhere.
+This app is intended for the viewing and managing the contacts of users.
 
 ## Installation
 
-First, [install PostgreSQL](https://www.postgresql.org/download/). Then create a database for your application.
+First, clone this repository to a local repo to begin working on it.
+
+Then, [install PostgreSQL](https://www.postgresql.org/download/). Then create a database for your application if you don't have one already.
+(Note: "mydb" is a temporary name. Replace with whatever you'd like)
 
 ```
 
-$ createdb nextjs-application-template
+$ createdb mydb
 Password:
 $
 
 ```
-
-Second, go to [https://github.com/ics-software-engineering/nextjs-application-template](https://github.com/ics-software-engineering/nextjs-application-template), and click the "Use this template" button. Complete the dialog box to create a new repository that you own that is initialized with this template's files.
-
-Third, go to your newly created repository, and click the "Clone or download" button to download your new GitHub repo to your local file system. Using [GitHub Desktop](https://desktop.github.com/) is a great choice if you use MacOS or Windows.
-
-Fourth, cd into the directory of your local copy of the repo, and install third party libraries with:
+Second, cd into the directory of your local copy of the repo, and install third party libraries with:
 
 ```
 
@@ -44,7 +24,7 @@ $ npm install
 
 ```
 
-Fifth, create a `.env` file from the `sample.env`. Edit the line `DATABASE_URL="postgresql://johndoe:randompassword@localhost:5432/mydb?schema=public"` to match your setup. Replace `mydb` with the PostgreSQL database that you created in the first step (in the example for this step the database is `nextjs-application-template`). replace `johndoe:randompassword` with a username and password you created for this db. If you did not create a user for this database, you can use the `postgress` user with the password you set when you installed postgress. Note: this is not a recommdened practice since the `postgres` user is an admin with full access to postgres. 
+Third, create a `.env` file from the `sample.env`. Edit the line `DATABASE_URL="postgresql://johndoe:randompassword@localhost:5432/mydb?schema=public"` to match your setup. Replace `mydb` with the PostgreSQL database that you created in the first step (in the example for this step the database is `nextjs-application-template`). replace `johndoe:randompassword` with a username and password you created for this db. If you did not create a user for this database, you can use the `postgress` user with the password you set when you installed postgress. Note: this is not a recommdened practice since the `postgres` user is an admin with full access to postgres. 
 
 See the Prisma docs [Connect your database](https://www.prisma.io/docs/prisma-orm/add-to-existing-project/postgresql#3-connect-your-database). 
 
@@ -96,10 +76,10 @@ $ npm run seed
 Seeding the database
   Creating user: admin@foo.com with role: ADMIN
   Creating user: john@foo.com with role: USER
-  Adding stuff: {"name":"Basket","quantity":3,"owner":"john@foo.com","condition":"excellent"}
-  Adding stuff: {"name":"Bicycle","quantity":2,"owner":"john@foo.com","condition":"poor"}
-  Adding stuff: {"name":"Banana","quantity":2,"owner":"admin@foo.com","condition":"good"}
-  Adding stuff: {"name":"Boogie Board","quantity":2,"owner":"admin@foo.com","condition":"excellent"}
+  Adding contact: Philip Johnson
+  Adding contact: Henri Casanova
+  Adding contact: Kim Binsted
+Database seeding completed successfully
 $
 
 ```
@@ -142,6 +122,29 @@ $ npm run lint
 ✔ No ESLint warnings or errors
 $
 ```
+
+### Using the App
+
+First, create an account and signup to begin managing contacts. Use the email and password to sign back in later.
+<img src="doc/signup.png">
+
+Now you can see the following pages on the navbar from the landing page:
+digits        - The Landing Page
+Add Contact   - Form for creating a new contact
+List Contacts - Displays all contacts owned by the logged in user
+<img src="doc/landing-user.png">
+
+Click on List Contacts to view and manage contacts owned by the current logged in user. You can add timestamped notes to contacts or edit their saved information.
+<img src="doc/user-list-contact-page.png">
+
+Compared to the list view of another user:
+<img src="doc/admin-list-contacts-page.png">
+
+Click on Add Contact to create a new contact for the current user.
+<img src="doc/add-contact-page.png">
+
+Logging into the admin account gives access to the Admin page
+<img src="doc/admin.png">
 
 ### Building the App
 
